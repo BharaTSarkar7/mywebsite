@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width , initial-scale=1.0">
+    <title>Will YOU BE MINE VALENTINE</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+    <svg class="heart-clip-defs" width="0" height="0" aria-hidden="true" focusable="false">
+        <defs>
+            <clipPath id="heart-clip" clipPathUnits="objectBoundingBox">
+                <path
+                    d="M0.5 0.15 C0.35 0 0 0 0 0.35 C0 0.6 0.25 0.8 0.5 1 C0.75 0.8 1 0.6 1 0.35 C1 0 0.65 0 0.5 0.15 Z" />
+            </clipPath>
+        </defs>
+    </svg>
+    <div class="heart-stack">
+        <div class="heart heart-1"></div>
+        <div class="heart heart-2"></div>
+        <div class="heart heart-3"></div>
+        <div class="heart-content">
+
+            <div class="container">
+
+                <h1 class="arc-text">Happy Propose Day BuBu....!</h1>
+
+                <div class="photo-card">
+                    <a class="photo-card__link" href="#photo-modal" aria-label="Open photos">
+                        <img class="photo-card__img" src="./assests/Bubu_page-0001.jpg" alt="Valentine memory">
+                    </a>
+                    <div class="photo-card__label">Tap to view</div>
+                </div>
+
+                <div id="photo-modal" class="photo-modal" aria-hidden="true">
+                    <a href="#" class="photo-modal__backdrop" aria-label="Close photos"></a>
+                    <div class="photo-modal__panel" role="dialog" aria-label="Valentine photos">
+                        <button class="photo-nav photo-nav--prev" type="button" aria-label="Previous photo">‹</button>
+                        <div class="photo-slider" id="photo-slider">
+                            <img class="photo-slide" src="./assests/Bubu_page-0001.jpg"
+                                alt="Valentine memory 1 enlarged">
+                            <img class="photo-slide" src="./assests/Bubu_page-0002.jpg"
+                                alt="Valentine memory 2 enlarged">
+                        </div>
+                        <button class="photo-nav photo-nav--next" type="button" aria-label="Next photo">›</button>
+                    </div>
+                </div>
+
+                <script>
+                    (() => {
+                        const slider = document.getElementById("photo-slider");
+                        if (!slider) return;
+                        const slides = Array.from(slider.querySelectorAll(".photo-slide"));
+                        const prevBtn = document.querySelector(".photo-nav--prev");
+                        const nextBtn = document.querySelector(".photo-nav--next");
+                        let index = 0;
+
+                        const scrollToIndex = (i, smooth = true) => {
+                            index = Math.max(0, Math.min(i, slides.length - 1));
+                            slider.scrollTo({
+                                left: slider.clientWidth * index,
+                                behavior: smooth ? "smooth" : "auto",
+                            });
+                        };
+
+                        prevBtn?.addEventListener("click", () => scrollToIndex(index - 1));
+                        nextBtn?.addEventListener("click", () => scrollToIndex(index + 1));
+
+                        slider.addEventListener("scroll", () => {
+                            const current = Math.round(slider.scrollLeft / slider.clientWidth);
+                            if (!Number.isNaN(current)) index = current;
+                        });
+
+                        window.addEventListener("resize", () => scrollToIndex(index, false));
+                    })();
+                </script>
+
+                <h1 class="arc-text-propose">You remember this letter..! You still haven't reply yet..! So for this also
+                    I'll be
+                    waiting..!</h1>
+                <div class="heart-btn">
+                    <a class="heart-link heart-link--back" href="./rose.html">
+                        <span>Back</span>
+                    </a>
+                    <a class="heart-link heart-link--next" href="./chocolate.html">
+                        <span>Next</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

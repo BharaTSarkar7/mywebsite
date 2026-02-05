@@ -1,0 +1,325 @@
+@import url('https://fonts.googleapis.com/css2?family=DynaPuff:wght@400..700&display=swap');
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: DynaPuff;
+}
+
+body {
+    width: 100vw;
+    height: 100vh;
+    height: 100svh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    background: #fee0e5;
+    padding: env(safe-area-inset-top) env(safe-area-inset-right)
+        env(safe-area-inset-bottom) env(safe-area-inset-left);
+}
+
+.heart-stack {
+    position: relative;
+    width: min(72vmin, 520px);
+    height: min(72vmin, 520px);
+    display: grid;
+    place-items: center;
+}
+
+.heart {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: 100%;
+    --sx: 1;
+    --sy: 1;
+    transform: translate(-50%, -50%) scaleX(var(--sx)) scaleY(var(--sy));
+    -webkit-clip-path: url(#heart-clip);
+    clip-path: url(#heart-clip);
+    animation: heart-pump 4s ease-in-out infinite;
+}
+
+.heart-1 {
+    background: #f7d2d9;
+    --sx: 2.4;
+    --sy: 2.2;
+}
+
+.heart-2 {
+    background: #f0b9c4;
+    --sx: 1.8;
+    --sy: 1.6;
+}
+
+.heart-3 {
+    background: #e9a7b6;
+    --sx: 1.35;
+    --sy: 1.35;
+}
+
+.heart-content {
+    position: relative;
+    z-index: 2;
+    width: min(80%, 360px);
+    display: grid;
+    place-items: center;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    gap: 20px;
+    max-width: 100%;
+    margin: 0;
+    
+}
+
+.arc-text{
+    overflow: visible;
+    pointer-events: none;
+    color: #8b2f3c;
+    font-size: clamp(1rem, 4.2vw, 1.35rem);
+}
+
+.arc-text-main{
+    overflow: visible;
+    pointer-events: none;
+    color: #8b2f3c;
+    font-size: clamp(2rem, 4.2vw, 1.35rem);
+}
+
+ .arc-text-propose{
+    overflow: visible;
+    pointer-events: none;
+    color: #8b2f3c;
+    font-size: clamp(0.8rem, 3.4vw, 1rem);
+    max-width: 28ch;
+}
+
+.container .tenor-gif-embed {
+    transform: scale(1);
+    max-width: min(68vw, 240px);
+
+}
+
+.photo-card {
+    width: min(70%, 300px);
+    background: #ffffff;
+    border-radius: 18px;
+    padding: 12px;
+    box-shadow: 0 10px 24px rgba(139, 47, 60, 0.18);
+    display: grid;
+    gap: 10px;
+    place-items: center;
+}
+
+.photo-card__link {
+    display: block;
+    width: 100%;
+    border-radius: 14px;
+    overflow: hidden;
+}
+
+.photo-card__img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+}
+
+.photo-card__label {
+    color: #8b2f3c;
+    font-size: clamp(0.9rem, 2.6vmin, 1rem);
+}
+
+.photo-modal {
+    position: fixed;
+    inset: 0;
+    display: none;
+    place-items: center;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 10;
+}
+
+.photo-modal:target {
+    display: grid;
+}
+
+.photo-modal__backdrop {
+    position: absolute;
+    inset: 0;
+}
+
+.photo-modal__panel {
+    position: relative;
+    display: grid;
+    place-items: center;
+}
+
+.photo-slider {
+    width: min(92vw, 520px);
+    height: min(70vh, 520px);
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    border-radius: 14px;
+    background: #ffffff;
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.4);
+    touch-action: pan-x;
+    scrollbar-width: none;
+}
+
+.photo-slider::-webkit-scrollbar {
+    display: none;
+}
+
+.photo-slide {
+    flex: 0 0 100%;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    scroll-snap-align: center;
+    background: #ffffff;
+}
+
+.photo-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: none;
+    background: rgba(255, 255, 255, 0.9);
+    color: #8b2f3c;
+    font-size: 1.2rem;
+    cursor: pointer;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+}
+
+.photo-nav--prev {
+    left: -18px;
+}
+
+.photo-nav--next {
+    right: -18px;
+}
+
+@media (max-width: 420px) {
+    .photo-card {
+        width: min(80%, 280px);
+    }
+
+    .photo-nav--prev {
+        left: 6px;
+    }
+
+    .photo-nav--next {
+        right: 6px;
+    }
+}
+
+.container .btn {
+    display: flex;
+    gap: 25px;
+    
+}
+
+.btn a{
+    text-decoration: underline;
+    color: #ffff;
+    font-size: large;
+    padding: 8px 20px;
+    border-radius: 20px;
+    background: #BF4051;
+}
+
+.container .heart-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 36px;
+    width: 100%;
+    margin-top: 16px;
+    padding-bottom: 6px;
+}
+
+.heart-link {
+    position: relative;
+    width: clamp(64px, 14vmin, 96px);
+    height: clamp(64px, 14vmin, 96px);
+    background: #BF4051;
+    text-decoration: none;
+    color: #fff;
+    font-size: clamp(0.8rem, 2.6vmin, 1rem);
+    display: grid;
+    place-items: center;
+    -webkit-clip-path: url(#heart-clip);
+    clip-path: url(#heart-clip);
+    box-shadow: 0 8px 18px rgba(191, 64, 81, 0.35);
+    transition: transform 0.2s ease;
+}
+
+.heart-link span {
+    text-decoration: underline;
+    transform: translateY(12%);
+    white-space: nowrap;
+}
+
+.heart-link:hover {
+    transform: scale(1.05);
+}
+
+.heart-link--back {
+    animation: heart-float-left 4.5s ease-in-out infinite;
+}
+
+.heart-link--next {
+    animation: heart-float-right 4.5s ease-in-out infinite;
+}
+
+@keyframes heart-float-left {
+    0%, 100% { transform: translate(0, 0); }
+    50% { transform: translate(-6px, -6px); }
+}
+
+@keyframes heart-float-right {
+    0%, 100% { transform: translate(0, 0); }
+    50% { transform: translate(6px, -6px); }
+}
+
+
+
+@keyframes heart-pump {
+    0%,
+    100% {
+        transform: translate(-50%, -50%) scaleX(var(--sx)) scaleY(var(--sy));
+    }
+    50% {
+        transform: translate(-50%, -50%) scaleX(var(--sx)) scaleY(var(--sy)) scale(1.03);
+    }
+}
+
+@media (max-width: 430px), (max-height: 900px) {
+    body {
+        overflow-y: auto;
+    }
+
+    .heart-stack {
+        width: min(80vmin, 460px);
+        height: min(80vmin, 460px);
+    }
+
+    .heart-1 { --sx: 2.1; --sy: 2.0; }
+    .heart-2 { --sx: 1.6; --sy: 1.45; }
+    .heart-3 { --sx: 1.25; --sy: 1.25; }
+
+    .container {
+        gap: 14px;
+    }
+}
